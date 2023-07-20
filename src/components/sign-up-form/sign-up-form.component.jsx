@@ -22,9 +22,10 @@ const SignUpForm = () => {
     }
 
     try {
-      const response = createAuthUserWithEmailAndPassword(email, password);
-      console.log(response);
-    } catch (error) {}
+      const { user } = createAuthUserWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.log('User creation encountered an error', error);
+    }
   };
 
   const handleChange = (event) => {
@@ -36,7 +37,7 @@ const SignUpForm = () => {
   return (
     <div>
       <h1>Sign up with your email and password</h1>
-      <form onSubmit={() => {}}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="">Display Name</label>
         <input
           type="text"
